@@ -63,7 +63,7 @@ if  !bd[message.from.id] && !@config["bban"].include?(message.from.id)
 		end
 	when "#info"
 		if db[message.from.id]
-	    	bot.api.send_message(chat_id: message.chat.id, text: "👾 Player: #{message.from.first_name} #{message.from.last_name}\n💠 Clan: #{db[message.from.id]["clan"]}\n🏅 Level: #{db[message.from.id]["level"]}\n💪 Power: #{db[message.from.id]["Power"]}\n🕸 Defense: #{db[message.from.id]["Defanse"]}\n🍎 Resources: #{db[message.from.id]["res"]}\n💎  Gems: #{db[message.from.id]["Gems"]}\n🔰 Shield: #{db[message.from.id]["Shield"]}\n⚔ Number of Attacks: #{db[message.from.id]["Attacks"]}\n👍--Wins: #{db[message.from.id]["Wins"]}\n👎--Losses: #{db[message.from.id]["Loses"]}\n🎯 Number of Defenses: #{db[message.from.id]["Defanse_a"]}\n👍--Wins: #{db[message.from.id]["dd_win"]}\n👎--Losses: #{db[message.from.id]["dd_loses"]}\n " )
+	    	bot.api.send_message(chat_id: message.chat.id, text: "👾 Player: #{message.from.first_name} #{message.from.last_name}\n🏅 Level: #{db[message.from.id]["level"]}\n💪 Power: #{db[message.from.id]["Power"]}\n🕸 Defense: #{db[message.from.id]["Defanse"]}\n🍎 Resources: #{db[message.from.id]["res"]}\n💎  Gems: #{db[message.from.id]["Gems"]}\n🔰 Number of Attacks: #{db[message.from.id]["Attacks"]}\n👍--Wins: #{db[message.from.id]["Wins"]}\n👎--Losses: #{db[message.from.id]["Loses"]}\n🎯 Number of Defenses: #{db[message.from.id]["Defanse_a"]}\n👍--Wins: #{db[message.from.id]["dd_win"]}\n👎--Losses: #{db[message.from.id]["dd_loses"]}\n " )
 	    else
 		    bot.api.send_message(chat_id: message.chat.id, text: "You're not registered in the game." )
 		end
