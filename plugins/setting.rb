@@ -21,7 +21,7 @@ if @config["Admins"].include?(message.from.id)
 	when "#about"
 		bot.api.send_message(chat_id: message.chat.id, text: "⚔TELEWAR #{V}⚔\nBy @Eyeslov\nThanks to :\n@Hirokai for the bot design improvements\n@WhiteFromInsideNiggaFromOut & @Mic_key for helping bug fixes\n@Haru_kun for ideas.\n and special thanks to @hussainho10 & @UnkownOtaku & @Abdullah_kready for watching :)" )
 	when "#how"
-		bot.api.send_message(chat_id: message.chat.id, text: "⚔TELEWAR #{V}⚔\nلعبة جماعية عبر منصة Telegram\nللتسجيل في اللعبة ارسل #دخول\nللهجوم على لاعب قم بالرد على اللاعب بكتابة كلمة هجوم\nلمعرفة ما يمكنك شراؤه عبر المتجر ارسل #المتجر" )
+		bot.api.send_message(chat_id: message.chat.id, text: "⚔TELEWAR #{V}⚔ is a multiplayer telegram chat game." )
 	end
 	if message.text == "#id" 
 		bot.api.send_message(chat_id: message.chat.id, text: message.chat.id, reply_to_message: message.message_id)
