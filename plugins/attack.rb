@@ -1,10 +1,10 @@
 
 if !bd[message.from.id] && !@config["bban"].include?(message.from.id)
 	if message.text == "attack" or message.text == "⚔"
-		if db[message.from.id] && message.reply_to_message && db[message.reply_to_message.from.id] && db[message.from.id]["level"] <= db[message.reply_to_message.from.id]["level"] && message.from.id != message.reply_to_message.from.id
+		if db[message.from.id] && message.reply_to_message && db[message.reply_to_message.from.id] && db[message.from.id]["level"] <= db[message.reply_to_message.from.id]["level"] && message.from.id != message.reply_to_message.from.id && db[message.from.id]["Shield"] == false && db[message.reply_to_message.from.id]["Shield"] == false
 			bot.api.send_message(chat_id: message.chat.id, text: "⚔The War Begins⚔\n#{message.from.first_name} #{message.from.last_name}\nVS\n#{message.reply_to_message.from.first_name} #{message.reply_to_message.from.last_name}\n")
 			puts "#{message.from.username} Attacks on #{message.reply_to_message.from.username}".on_red		
-			sleep 1
+			sleep 0
 			if db[message.from.id]["Power"] >= db[message.reply_to_message.from.id]["Defanse"]
 				if db[message.from.id]["res"] >= 50
 					lnumbers = [6,5,5,4,4,4,3,3,3,3,2,2,2,2,2,1,1,1,1,1,1]

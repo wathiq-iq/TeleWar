@@ -21,7 +21,7 @@ if @config["Admins"].include?(message.from.id)
 	when "#about"
 		bot.api.send_message(chat_id: message.chat.id, text: "⚔TELEWAR #{V}⚔\nBy @Eyeslov\nThanks to :\n@Hirokai for the bot design improvements\n@WhiteFromInsideNiggaFromOut & @Mic_key for helping bug fixes\n@Haru_kun for ideas.\n and special thanks to @hussainho10 & @UnkownOtaku & @Abdullah_kready for watching :)" )
 	when "#how"
-		bot.api.send_message(chat_id: message.chat.id, text: "⚔TELEWAR #{V}⚔ is a multiplayer telegram chat game." )
+		bot.api.send_message(chat_id: message.chat.id, text: "⚔TELEWAR #{V}⚔\n multiplayer telegram chat game" )
 	end
 	if message.text == "#id" 
 		bot.api.send_message(chat_id: message.chat.id, text: message.chat.id, reply_to_message: message.message_id)
@@ -40,7 +40,7 @@ if @config["Admins"].include?(message.from.id)
 end
 if  !bd[message.from.id] && !@config["bban"].include?(message.from.id)
 	case message.text
-	when "#login"
+	when "#signup"
 		if db[message.from.id]
 		    bot.api.send_message(chat_id: message.chat.id, text: "You're Already Registered!" )
 	    else
@@ -55,7 +55,7 @@ if  !bd[message.from.id] && !@config["bban"].include?(message.from.id)
 		    	"dd_win"=>0,
 		    	"dd_loses"=>0,
 		    	"level"=>1,
-		    	"Shield"=>false,
+		    	"Shield"=>true,
 		    	"clan"=>"none"
 		    }
 		    bot.api.send_message(chat_id: message.chat.id, text: "You've been Registered!" )
@@ -63,12 +63,18 @@ if  !bd[message.from.id] && !@config["bban"].include?(message.from.id)
 		end
 	when "#info"
 		if db[message.from.id]
-	    	bot.api.send_message(chat_id: message.chat.id, text: "👾 Player: #{message.from.first_name} #{message.from.last_name}\n🏅 Level: #{db[message.from.id]["level"]}\n💪 Power: #{db[message.from.id]["Power"]}\n🕸 Defense: #{db[message.from.id]["Defanse"]}\n🍎 Resources: #{db[message.from.id]["res"]}\n💎  Gems: #{db[message.from.id]["Gems"]}\n🔰 Number of Attacks: #{db[message.from.id]["Attacks"]}\n👍--Wins: #{db[message.from.id]["Wins"]}\n👎--Losses: #{db[message.from.id]["Loses"]}\n🎯 Number of Defenses: #{db[message.from.id]["Defanse_a"]}\n👍--Wins: #{db[message.from.id]["dd_win"]}\n👎--Losses: #{db[message.from.id]["dd_loses"]}\n " )
+	    	bot.api.send_message(chat_id: message.chat.id, text: "👾 Player: #{message.from.first_name} #{message.from.last_name}\n🏅 Level: #{db[message.from.id]["level"]}\n💪 Power: #{db[message.from.id]["Power"]}\n🕸 Defense: #{db[message.from.id]["Defanse"]}\n🍎 Resources: #{db[message.from.id]["res"]}\n💎  Gems: #{db[message.from.id]["Gems"]}\n🔰 Shield: #{db[message.from.id]["Shield"]}\n⚔ Number of Attacks: #{db[message.from.id]["Attacks"]}\n👍--Wins: #{db[message.from.id]["Wins"]}\n👎--Losses: #{db[message.from.id]["Loses"]}\n🎯 Number of Defenses: #{db[message.from.id]["Defanse_a"]}\n👍--Wins: #{db[message.from.id]["dd_win"]}\n👎--Losses: #{db[message.from.id]["dd_loses"]}\n " )
 	    else
 		    bot.api.send_message(chat_id: message.chat.id, text: "You're not registered in the game." )
 		end
 	when "#shop"
 		bot.api.send_message(chat_id: message.chat.id, text: "💲💲💲Shop💲💲💲\nfor buying send :\nBuy [pow,def,res] [1,2,3]\n》💪 Power Points\n1 -   50💪 for 10💎\n2 - 100💪 for 15💎\n3 - 250💪 for 30💎\n》🕸 Defense Points\n1 -  50 🕸 for 10 💎\n2 - 100🕸 for 15 💎\n3 - 250🕸 for 30 💎\n》🍎 Resources\n1 -   300🍎 for 15💎\n2 -   600🍎 for 25💎\n3 - 1400🍎 for 35💎" )
+	when "#login"
+		db[message.from.id]["Shield"] = false
+		bot.api.send_message(chat_id: message.chat.id, text: "تم الدخول" )
+	when "#logout"
+		db[message.from.id]["Shield"] = true
+		bot.api.send_message(chat_id: message.chat.id, text: "تم الخروج" )
 	end
 
 	if message.text == "info" && db[message.from.id] && message.reply_to_message && db[message.reply_to_message.from.id]
